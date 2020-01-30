@@ -15,4 +15,7 @@ interface TestAssistantsProvider {
     val adbServer: AdbServer
     val testLogger: UiTestLogger
     val params: Params
+
+    val вПизду: UiTestLogger
+        get() = testLogger
 }

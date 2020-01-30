@@ -14,6 +14,8 @@ interface FlakySafetyProvider {
      */
     fun <T> flakySafely(action: () -> T): T
 
+    fun <T> сБожьейПомощью(action: () -> T): T = flakySafely(action)
+
     /**
      * Invokes the given [action] flaky safely.
      *
@@ -32,6 +34,14 @@ interface FlakySafetyProvider {
         failureMessage: String? = null,
         action: () -> T
     ): T
+
+    fun <T> сБожьейПомощью(
+        timeoutMs: Long? = null,
+        intervalMs: Long? = null,
+        allowedExceptions: Set<Class<out Throwable>>? = null,
+        failureMessage: String? = null,
+        action: () -> T
+    ): T = flakySafely(timeoutMs, intervalMs, allowedExceptions, failureMessage, action)
 }
 
 /**

@@ -19,6 +19,8 @@ interface ContinuouslyProvider {
      */
     fun <T> continuously(action: () -> T): T
 
+    fun <T> ебатьПерекопать(action: () -> T): T = continuously(action)
+
     /**
      * Invokes the given [action] during set timeout.
      *
@@ -40,4 +42,11 @@ interface ContinuouslyProvider {
         failureMessage: String? = null,
         action: () -> T
     ): T
+
+    fun <T> ебатьПерекопать(
+        timeoutMs: Long? = null,
+        intervalMs: Long? = null,
+        failureMessage: String? = null,
+        action: () -> T
+    ): T = continuously(timeoutMs, intervalMs, failureMessage, action)
 }

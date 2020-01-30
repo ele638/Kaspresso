@@ -34,4 +34,16 @@ interface Logger {
      * Error level of logging with tag.
      */
     fun e(tag: String, text: String)
+
+    fun шепнуть(text: String) = i(text)
+
+    fun сказать(text: String) = d(text)
+
+    fun проорать(text: String) = e(text)
+
+    fun шепнуть(tag: String, text: String) = i(tag, text)
+
+    fun сказать(tag: String, text: String) = d(tag, text)
+
+    fun проорать(tag: String, text: String) = e(tag, text)
 }
